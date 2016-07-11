@@ -1,0 +1,17 @@
+---
+- hosts: all
+
+  pre_tasks:
+    - name: Update apt cache if needed.
+      apt: update_cache=yes cache_valid_time=3600
+      become: yes
+      become_method: sudo
+
+  vars:
+    supervisor_programs:
+      - name: zeppelin
+        command: /opt/zeppelin/bin/zeppelin-daemon.sh upstart
+
+  roles:
+    - zeppelin
+    - supervisord

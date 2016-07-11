@@ -1,0 +1,6 @@
+[submodule "ansible/roles/zeppelin"]
+	path = ansible/roles/zeppelin
+	url = https://github.com/kevincoakley/ansible-role-zeppelin.git
+[submodule "ansible/roles/supervisord"]
+	path = ansible/roles/supervisord
+	url = https://github.com/kevincoakley/ansible-role-supervisor.git

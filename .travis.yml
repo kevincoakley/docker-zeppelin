@@ -1,0 +1,23 @@
+sudo: required
+
+language: bash
+
+services:
+    - docker
+
+before_install:
+    - docker info
+    - docker version
+
+install:
+    - docker build -t kevincoakley/zeppelin .
+
+script:
+    - docker run --name my_zeppelin -d -p 127.0.0.1:8080:8080 kevincoakley/zeppelin
+    - sleep 60
+    - bash ./tests/test_zeppelin.sh
+
+after_script:
+    - docker ps -a
+    - docker logs my_zeppelin
+    - docker top my_zeppelin
